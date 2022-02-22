@@ -50,20 +50,21 @@ index f2fe6ea3719ff8b2913b7a3a939d7a5b75cb8b28..560c646101a8ca420ef4c825d3669d15
                  metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
                      Map<String, Map<String, Integer>> map = new HashMap<>();
 diff --git a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
-index ece77f5ea4b14bbed7c070131b3251ea86764538..a24862169a8be4359dd6660bbfcb9f03090f30c9 100644
+index ece77f5ea4b14bbed7c070131b3251ea86764538..81c1d15d8143559b06ac8a9f6def85a165183c4e 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
-@@ -20,7 +20,8 @@ import java.util.stream.StreamSupport;
+@@ -19,8 +19,8 @@ import java.util.stream.StreamSupport;
+ 
  public class PaperVersionFetcher implements VersionFetcher {
      private static final java.util.regex.Pattern VER_PATTERN = java.util.regex.Pattern.compile("^([0-9\\.]*)\\-.*R"); // R is an anchor, will always give '-R' at end
-     private static final String GITHUB_BRANCH_NAME = "master";
+-    private static final String GITHUB_BRANCH_NAME = "master";
 -    private static final String DOWNLOAD_PAGE = "https://papermc.io/downloads";
-+    //private static final String DOWNLOAD_PAGE = "https://papermc.io/downloads";
 +    private static final String GITHUB_BRANCH_NAME = "ver/1.18.1"; // Masami
++    //private static final String DOWNLOAD_PAGE = "https://papermc.io/downloads";
      private static @Nullable String mcVer;
  
      @Override
-@@ -31,8 +32,8 @@ public class PaperVersionFetcher implements VersionFetcher {
+@@ -31,8 +31,8 @@ public class PaperVersionFetcher implements VersionFetcher {
      @Nonnull
      @Override
      public Component getVersionMessage(@Nonnull String serverVersion) {
@@ -74,7 +75,7 @@ index ece77f5ea4b14bbed7c070131b3251ea86764538..a24862169a8be4359dd6660bbfcb9f03
          final Component history = getHistory();
  
          return history != null ? TextComponent.ofChildren(updateMessage, Component.newline(), history) : updateMessage;
-@@ -45,7 +46,7 @@ public class PaperVersionFetcher implements VersionFetcher {
+@@ -45,7 +45,7 @@ public class PaperVersionFetcher implements VersionFetcher {
                  String result = matcher.group();
                  mcVer = result.substring(0, result.length() - 2); // strip 'R' anchor and trailing '-'
              } else {
@@ -83,7 +84,7 @@ index ece77f5ea4b14bbed7c070131b3251ea86764538..a24862169a8be4359dd6660bbfcb9f03
                  org.bukkit.Bukkit.getLogger().warning("Pattern: " + VER_PATTERN.toString());
                  org.bukkit.Bukkit.getLogger().warning("Version: " + org.bukkit.Bukkit.getBukkitVersion());
              }
-@@ -56,13 +57,13 @@ public class PaperVersionFetcher implements VersionFetcher {
+@@ -56,13 +56,13 @@ public class PaperVersionFetcher implements VersionFetcher {
  
      private static Component getUpdateStatusMessage(@Nonnull String repo, @Nonnull String branch, @Nonnull String versionInfo) {
          int distance;
@@ -92,17 +93,18 @@ index ece77f5ea4b14bbed7c070131b3251ea86764538..a24862169a8be4359dd6660bbfcb9f03
 +        //try {
 +            /*int jenkinsBuild = Integer.parseInt(versionInfo);
              distance = fetchDistanceFromSiteApi(jenkinsBuild, getMinecraftVersion());
-         } catch (NumberFormatException ignored) {
+-        } catch (NumberFormatException ignored) {
 -            versionInfo = versionInfo.replace("\"", "");
 -            distance = fetchDistanceFromGitHub(repo, branch, versionInfo);
 -        }
-+            versionInfo = versionInfo.replace("\"", "");*/ // Masami - err we dont hab jenkins, as always
++        } catch (NumberFormatException ignored) {*/ // Masami - whats jenkins
++        versionInfo = versionInfo.replace("\"", "");
 +        distance = fetchDistanceFromGitHub(repo, branch, versionInfo);
 +        //}
  
          switch (distance) {
              case -1:
-@@ -72,16 +73,16 @@ public class PaperVersionFetcher implements VersionFetcher {
+@@ -72,16 +72,16 @@ public class PaperVersionFetcher implements VersionFetcher {
              case -2:
                  return Component.text("Unknown version", NamedTextColor.YELLOW);
              default:
@@ -123,7 +125,7 @@ index ece77f5ea4b14bbed7c070131b3251ea86764538..a24862169a8be4359dd6660bbfcb9f03
          if (siteApiVersion == null) { return -1; }
          try {
              try (BufferedReader reader = Resources.asCharSource(
-@@ -103,7 +104,7 @@ public class PaperVersionFetcher implements VersionFetcher {
+@@ -103,7 +103,7 @@ public class PaperVersionFetcher implements VersionFetcher {
              e.printStackTrace();
              return -1;
          }
