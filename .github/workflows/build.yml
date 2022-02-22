@@ -39,12 +39,12 @@ jobs:
       - name: Archive Paperclip
         uses: actions/upload-artifact@v2
         with:
-          name: Mirai-1.18.1
-          path: build/libs/mirai-paperclip-1.18.1-R0.1-SNAPSHOT-reobf.jar
+          name: Masami-1.18.1
+          path: build/libs/masami-paperclip-1.18.1-R0.1-SNAPSHOT-reobf.jar
       - name: Prepare Github Page Files
         run: |
           mkdir -p public
-          cp build/libs/mirai-paperclip-1.18.1-R0.1-SNAPSHOT-reobf.jar public/Mirai-1.18.1-R0.1-SNAPSHOT.jar
+          cp build/libs/masami-paperclip-1.18.1-R0.1-SNAPSHOT-reobf.jar public/Masami-1.18.1-R0.1-SNAPSHOT.jar
       - name: Deploy to Github Pages
         if: github.event_name != 'pull_request'
         uses: peaceiris/actions-gh-pages@v3
