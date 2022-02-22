@@ -7,7 +7,7 @@ Original code by YatopiaMC, licensed under MIT
 You can find the original code on https://github.com/YatopiaMC/Yatopia
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index e7f677cb5abb24c52b10087837f44c865140635c..c501ffbd1f49b2da666888bc7737b1370befe07b 100644
+index 4dde8745e7b9da48189ad69977791886ac11d90f..6e48d35d9e9b763ef08a69e9b8f2ad41e38c75a4 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -113,6 +113,7 @@ relocation {

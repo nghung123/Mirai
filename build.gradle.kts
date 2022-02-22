@@ -55,7 +55,7 @@ subprojects {
 }
 
 paperweight {
-    serverProject.set(project(":mirai-server"))
+    serverProject.set(project(":masami-server"))
 
     remapRepo.set("https://maven.fabricmc.net/")
     decompileRepo.set("https://maven.quiltmc.org/")
@@ -71,8 +71,8 @@ paperweight {
             apiPatchDir.set(layout.projectDirectory.dir("patches/api"))
             serverPatchDir.set(layout.projectDirectory.dir("patches/server"))
 
-            apiOutputDir.set(layout.projectDirectory.dir("mirai-api"))
-            serverOutputDir.set(layout.projectDirectory.dir("mirai-server"))
+            apiOutputDir.set(layout.projectDirectory.dir("masami-api"))
+            serverOutputDir.set(layout.projectDirectory.dir("masami-server"))
         }
     }
 }

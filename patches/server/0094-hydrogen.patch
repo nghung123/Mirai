@@ -1284,7 +1284,7 @@ index 6e5d13e63c97cb95b93af1d997dc0eb53f966566..231448a1a49f1c4034ce09e06dcbdabe
              throw new ResourceLocationException("Non [a-z0-9_.-] character in namespace of location: " + org.apache.commons.lang3.StringUtils.normalizeSpace(this.namespace) + ":" + org.apache.commons.lang3.StringUtils.normalizeSpace(this.path)); // Paper
          } else if (!isValidPath(this.path)) {
 diff --git a/src/main/java/net/minecraft/server/Main.java b/src/main/java/net/minecraft/server/Main.java
-index e2c8f716af55ebb7e4233c2a3d6515f8f4a239fa..3392c4b39c7edb2ddfe6580ab15c75573e64c850 100644
+index 2f5c021b6849acb81064d55418707921424b649b..8cf835307c36fb048d62af9f417daeeeb71a0cff 100644
 --- a/src/main/java/net/minecraft/server/Main.java
 +++ b/src/main/java/net/minecraft/server/Main.java
 @@ -64,6 +64,7 @@ public class Main {

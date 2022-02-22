@@ -5,7 +5,7 @@ Subject: [PATCH] Configurable server metrics
 
 
 diff --git a/src/main/java/com/destroystokyo/paper/PaperConfig.java b/src/main/java/com/destroystokyo/paper/PaperConfig.java
-index 499d5d5a35323571571911969cc9bac3b90cec99..b1589f65b6a4464c2c5dc450693505673fc89077 100644
+index 638cffa552d804d5901e1d099691fdfa4c65a7a7..0deeaa36e95648344809f798a36f4ee9f4fb5a25 100644
 --- a/src/main/java/com/destroystokyo/paper/PaperConfig.java
 +++ b/src/main/java/com/destroystokyo/paper/PaperConfig.java
 @@ -123,7 +123,7 @@ public class PaperConfig {

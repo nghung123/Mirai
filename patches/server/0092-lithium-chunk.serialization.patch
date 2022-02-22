@@ -281,7 +281,7 @@ index 881a2318aac72526e0451688af58c620e4f525d1..cf5051f05f8bd387b20fd4dafcbe2a5f
 +}
 \ No newline at end of file
 diff --git a/src/main/java/net/minecraft/util/ZeroBitStorage.java b/src/main/java/net/minecraft/util/ZeroBitStorage.java
-index 5d8e9bdf5538b19681f21949368d862fab8a89ad..2224245a985dfe78565dfdb42840d3ed43530525 100644
+index 97c744508cc535418eba65fa722859c81c22d647..a2ea0a2864b9c4f847f1a14ffc0900e67c18f9ee 100644
 --- a/src/main/java/net/minecraft/util/ZeroBitStorage.java
 +++ b/src/main/java/net/minecraft/util/ZeroBitStorage.java
 @@ -2,6 +2,7 @@ package net.minecraft.util;

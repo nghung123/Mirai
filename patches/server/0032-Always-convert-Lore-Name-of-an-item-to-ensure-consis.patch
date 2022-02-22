@@ -7,7 +7,7 @@ Original code by Starlis, licensed under GNU General Public License v3.0
 You can find the original code on https://github.com/starlis/empirecraft
 
 diff --git a/src/main/java/net/minecraft/world/item/ItemStack.java b/src/main/java/net/minecraft/world/item/ItemStack.java
-index 66f808cabcf6a9a6584849b285f1c60133adc7b4..c38be29d0d9f42181e5c7bcbed68b2bdb8bc5a16 100644
+index 8bd12326e591213f0a093b96a5af3f04e19dc980..889faf75ab66dc8a2ad15661374dab731d6ec35b 100644
 --- a/src/main/java/net/minecraft/world/item/ItemStack.java
 +++ b/src/main/java/net/minecraft/world/item/ItemStack.java
 @@ -174,9 +174,9 @@ public final class ItemStack {

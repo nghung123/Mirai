@@ -6,10 +6,10 @@ Subject: [PATCH] PaperPR Use DataConverter for itemstack/entity
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-index a71208f6f1d25bad2033c124938a3c25d3ed9997..761e93c87212ef888ed6f8ca1c42a5d7daa16ca9 100644
+index 0c13463b8b28b099be323969a9535359f41f5541..0dbffc5b871572471fa7dd65e1cea40ced86d0c0 100644
 --- a/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
 +++ b/src/main/java/org/bukkit/craftbukkit/util/CraftMagicNumbers.java
-@@ -446,8 +446,8 @@ public final class CraftMagicNumbers implements UnsafeValues {
+@@ -444,8 +444,8 @@ public final class CraftMagicNumbers implements UnsafeValues {
  
          CompoundTag compound = deserializeNbtFromBytes(data);
          int dataVersion = compound.getInt("DataVersion");
@@ -20,7 +20,7 @@ index a71208f6f1d25bad2033c124938a3c25d3ed9997..761e93c87212ef888ed6f8ca1c42a5d7
      }
  
      @Override
-@@ -467,8 +467,7 @@ public final class CraftMagicNumbers implements UnsafeValues {
+@@ -465,8 +465,7 @@ public final class CraftMagicNumbers implements UnsafeValues {
  
          CompoundTag compound = deserializeNbtFromBytes(data);
          int dataVersion = compound.getInt("DataVersion");

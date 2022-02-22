@@ -5,6 +5,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = "mirai"
+rootProject.name = "masami"
 
-include("mirai-api", "mirai-server")
+include("masami-api", "masami-server")

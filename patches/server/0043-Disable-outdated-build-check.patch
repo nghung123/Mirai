@@ -7,7 +7,7 @@ Original code by PurpurMC, licensed under MIT
 You can find the original code on https://github.com/PurpurMC/Purpur
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/Main.java b/src/main/java/org/bukkit/craftbukkit/Main.java
-index 836ce7ec6a1b001ee5bb92cc98fd740a49d70c3b..2c89ec1757fed8ea77d10ec9d8a4b53d2debf510 100644
+index a23cc1b72b475f5dc006a49732fb3d305fdf418b..d27f375345771f37d7fc82582616d5bec67b2731 100644
 --- a/src/main/java/org/bukkit/craftbukkit/Main.java
 +++ b/src/main/java/org/bukkit/craftbukkit/Main.java
 @@ -269,7 +269,7 @@ public class Main {

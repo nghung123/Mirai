@@ -5,7 +5,7 @@ Subject: [PATCH] PaperPR Optimize despawn when no player is on range
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/Mob.java b/src/main/java/net/minecraft/world/entity/Mob.java
-index 35ff7abd8251b0af6c23fbb63804db632ec5b85d..b101e0b234c9cef315f871b880c1dcb3647d5ff6 100644
+index 7ee01ebedfb20354359d23168d7a69f4ad7f83c0..4375d11e674ff9c713e9c4d407c7abc0bdbb1719 100644
 --- a/src/main/java/net/minecraft/world/entity/Mob.java
 +++ b/src/main/java/net/minecraft/world/entity/Mob.java
 @@ -796,9 +796,6 @@ public abstract class Mob extends LivingEntity {

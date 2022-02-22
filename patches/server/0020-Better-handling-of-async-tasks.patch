@@ -59,7 +59,7 @@ index d6a57cdad2c92521a800cb18d060d9d6d627a8c0..0ace819f156ac4a50660d9bcb257d633
      public static Runnable once(Runnable run) {
          AtomicBoolean ran = new AtomicBoolean(false);
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index dfb20123def4e0e3b13d3ae976a0259d1e17bd01..5a9554596a4ec3e1d8435692e9dd25d6bc4fba5e 100644
+index fd2ca62ce4e0fb4bda7930881c94bffc8509aa5b..136911997ce855e93ac6722b5063be9712e83dbd 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -372,6 +372,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<Runnab

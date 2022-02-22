@@ -1,11 +1,12 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Etil <81570777+etil2jz@users.noreply.github.com>
-Date: Fri, 17 Dec 2021 19:30:47 +0100
-Subject: [PATCH] Mirai Branding Changes
+From: Kurumifake <kurumiisshidowife@gmail.com>
+Date: Tue, 22 Feb 2022 09:25:13 +0000
+Subject: [PATCH] Branding Changes
 
+Some original code by etil2jz, licensed under GPLv3, can be found at https://github.com/etil2jz/Mirai
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 86548210e50879504f646ef3aa46927998f2d775..e7f677cb5abb24c52b10087837f44c865140635c 100644
+index 86548210e50879504f646ef3aa46927998f2d775..4dde8745e7b9da48189ad69977791886ac11d90f 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -18,7 +18,7 @@ repositories {
@@ -13,7 +14,7 @@ index 86548210e50879504f646ef3aa46927998f2d775..e7f677cb5abb24c52b10087837f44c86
  
  dependencies {
 -    implementation(project(":pufferfish-api")) // Pufferfish // Paper
-+    implementation(project(":mirai-api")) // Mirai // Pufferfish // Paper
++    implementation(project(":masami-api")) // Masami// Mirai // Pufferfish // Paper
      // Pufferfish start
      implementation("io.papermc.paper:paper-mojangapi:1.18.1-R0.1-SNAPSHOT") {
          exclude("io.papermc.paper", "paper-api")
@@ -22,12 +23,12 @@ index 86548210e50879504f646ef3aa46927998f2d775..e7f677cb5abb24c52b10087837f44c86
              "Main-Class" to "org.bukkit.craftbukkit.Main",
              "Implementation-Title" to "CraftBukkit",
 -            "Implementation-Version" to "git-Pufferfish-$implementationVersion", // Pufferfish
-+            "Implementation-Version" to "git-Mirai-$implementationVersion", // Pufferfish
++            "Implementation-Version" to "git-Masami-$implementationVersion", // Pufferfish
              "Implementation-Vendor" to date, // Paper
              "Specification-Title" to "Bukkit",
              "Specification-Version" to project.version,
 diff --git a/src/main/java/com/destroystokyo/paper/Metrics.java b/src/main/java/com/destroystokyo/paper/Metrics.java
-index f2fe6ea3719ff8b2913b7a3a939d7a5b75cb8b28..9045cb54813d26aba9f47dc999eb1d676cfb705b 100644
+index f2fe6ea3719ff8b2913b7a3a939d7a5b75cb8b28..560c646101a8ca420ef4c825d3669d15c1f76e65 100644
 --- a/src/main/java/com/destroystokyo/paper/Metrics.java
 +++ b/src/main/java/com/destroystokyo/paper/Metrics.java
 @@ -593,7 +593,7 @@ public class Metrics {
@@ -35,7 +36,7 @@ index f2fe6ea3719ff8b2913b7a3a939d7a5b75cb8b28..9045cb54813d26aba9f47dc999eb1d67
              // Only start Metrics, if it's enabled in the config
              if (config.getBoolean("enabled", true)) {
 -                Metrics metrics = new Metrics("Pufferfish", serverUUID, logFailedRequests, Bukkit.getLogger()); // Pufferfish
-+                Metrics metrics = new Metrics("Mirai", serverUUID, logFailedRequests, Bukkit.getLogger()); // Pufferfish
++                Metrics metrics = new Metrics("Masami", serverUUID, logFailedRequests, Bukkit.getLogger()); // Pufferfish
  
                  metrics.addCustomChart(new Metrics.SimplePie("minecraft_version", () -> {
                      String minecraftVersion = Bukkit.getVersion();
@@ -44,12 +45,89 @@ index f2fe6ea3719ff8b2913b7a3a939d7a5b75cb8b28..9045cb54813d26aba9f47dc999eb1d67
                  metrics.addCustomChart(new Metrics.SingleLineChart("players", () -> Bukkit.getOnlinePlayers().size()));
                  metrics.addCustomChart(new Metrics.SimplePie("online_mode", () -> Bukkit.getOnlineMode() ? "online" : "offline"));
 -                metrics.addCustomChart(new Metrics.SimplePie("pufferfish_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
-+                metrics.addCustomChart(new Metrics.SimplePie("mirai_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
++                metrics.addCustomChart(new Metrics.SimplePie("masami_version", () -> (Metrics.class.getPackage().getImplementationVersion() != null) ? Metrics.class.getPackage().getImplementationVersion() : "unknown"));
  
                  metrics.addCustomChart(new Metrics.DrilldownPie("java_version", () -> {
                      Map<String, Map<String, Integer>> map = new HashMap<>();
+diff --git a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
+index ece77f5ea4b14bbed7c070131b3251ea86764538..3519bba9d226a7662af81ac0c7cecce72a23be3d 100644
+--- a/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
++++ b/src/main/java/com/destroystokyo/paper/PaperVersionFetcher.java
+@@ -20,7 +20,8 @@ import java.util.stream.StreamSupport;
+ public class PaperVersionFetcher implements VersionFetcher {
+     private static final java.util.regex.Pattern VER_PATTERN = java.util.regex.Pattern.compile("^([0-9\\.]*)\\-.*R"); // R is an anchor, will always give '-R' at end
+     private static final String GITHUB_BRANCH_NAME = "master";
+-    private static final String DOWNLOAD_PAGE = "https://papermc.io/downloads";
++    //private static final String DOWNLOAD_PAGE = "https://papermc.io/downloads";
++    private static final String GITHUB_BRANCH_NAME = "main"; // Masami
+     private static @Nullable String mcVer;
+ 
+     @Override
+@@ -31,8 +32,8 @@ public class PaperVersionFetcher implements VersionFetcher {
+     @Nonnull
+     @Override
+     public Component getVersionMessage(@Nonnull String serverVersion) {
+-        String[] parts = serverVersion.substring("git-Paper-".length()).split("[-\\s]");
+-        final Component updateMessage = getUpdateStatusMessage("PaperMC/Paper", GITHUB_BRANCH_NAME, parts[0]);
++        String[] parts = serverVersion.substring("git-Masami-".length()).split("[-\\s]"); // Masami
++        final Component updateMessage = getUpdateStatusMessage("nghung123/Mirai", GITHUB_BRANCH_NAME, parts[0]); // Masami
+         final Component history = getHistory();
+ 
+         return history != null ? TextComponent.ofChildren(updateMessage, Component.newline(), history) : updateMessage;
+@@ -45,7 +46,7 @@ public class PaperVersionFetcher implements VersionFetcher {
+                 String result = matcher.group();
+                 mcVer = result.substring(0, result.length() - 2); // strip 'R' anchor and trailing '-'
+             } else {
+-                org.bukkit.Bukkit.getLogger().warning("Unable to match version to pattern! Report to PaperMC!");
++                org.bukkit.Bukkit.getLogger().warning("Unable to match version to pattern!"); // Masami
+                 org.bukkit.Bukkit.getLogger().warning("Pattern: " + VER_PATTERN.toString());
+                 org.bukkit.Bukkit.getLogger().warning("Version: " + org.bukkit.Bukkit.getBukkitVersion());
+             }
+@@ -57,10 +58,10 @@ public class PaperVersionFetcher implements VersionFetcher {
+     private static Component getUpdateStatusMessage(@Nonnull String repo, @Nonnull String branch, @Nonnull String versionInfo) {
+         int distance;
+         try {
+-            int jenkinsBuild = Integer.parseInt(versionInfo);
++            /*int jenkinsBuild = Integer.parseInt(versionInfo);
+             distance = fetchDistanceFromSiteApi(jenkinsBuild, getMinecraftVersion());
+         } catch (NumberFormatException ignored) {
+-            versionInfo = versionInfo.replace("\"", "");
++            versionInfo = versionInfo.replace("\"", "");*/ // Masami - err we dont hab jenkins, as always
+             distance = fetchDistanceFromGitHub(repo, branch, versionInfo);
+         }
+ 
+@@ -72,16 +73,16 @@ public class PaperVersionFetcher implements VersionFetcher {
+             case -2:
+                 return Component.text("Unknown version", NamedTextColor.YELLOW);
+             default:
+-                return Component.text("You are " + distance + " version(s) behind", NamedTextColor.YELLOW)
+-                        .append(Component.newline())
++                return Component.text("You are " + distance + " version(s) behind", NamedTextColor.YELLOW);
++                        /*.append(Component.newline())
+                         .append(Component.text("Download the new version at: ")
+                                 .append(Component.text(DOWNLOAD_PAGE, NamedTextColor.GOLD)
+                                         .hoverEvent(Component.text("Click to open", NamedTextColor.WHITE))
+-                                        .clickEvent(ClickEvent.openUrl(DOWNLOAD_PAGE))));
++                                        .clickEvent(ClickEvent.openUrl(DOWNLOAD_PAGE))));*/
+         }
+     }
+ 
+-    private static int fetchDistanceFromSiteApi(int jenkinsBuild, @Nullable String siteApiVersion) {
++    /*private static int fetchDistanceFromSiteApi(int jenkinsBuild, @Nullable String siteApiVersion) {
+         if (siteApiVersion == null) { return -1; }
+         try {
+             try (BufferedReader reader = Resources.asCharSource(
+@@ -103,7 +104,7 @@ public class PaperVersionFetcher implements VersionFetcher {
+             e.printStackTrace();
+             return -1;
+         }
+-    }
++    }*/
+ 
+     // Contributed by Techcable <Techcable@outlook.com> in GH-65
+     private static int fetchDistanceFromGitHub(@Nonnull String repo, @Nonnull String branch, @Nonnull String hash) {
 diff --git a/src/main/java/com/destroystokyo/paper/console/PaperConsole.java b/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
-index e0b1f0671d16ddddcb6725acd25a1d1d69e42701..c5dc798bb272a94520404e0e14c17500d3d045ae 100644
+index e0b1f0671d16ddddcb6725acd25a1d1d69e42701..a79ba3f152a4f7cd062b10b0457a8ebfb02d6d4a 100644
 --- a/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
 +++ b/src/main/java/com/destroystokyo/paper/console/PaperConsole.java
 @@ -17,7 +17,7 @@ public final class PaperConsole extends SimpleTerminalConsole {
@@ -57,7 +135,7 @@ index e0b1f0671d16ddddcb6725acd25a1d1d69e42701..c5dc798bb272a94520404e0e14c17500
      protected LineReader buildReader(LineReaderBuilder builder) {
          builder
 -                .appName("Paper")
-+                .appName("Mirai") // Mirai
++                .appName("Masami") // Mirai // Masami
                  .variable(LineReader.HISTORY_FILE, java.nio.file.Paths.get(".console_history"))
                  .completer(new ConsoleCommandCompleter(this.server))
                  .option(LineReader.Option.COMPLETE_IN_WORD, true);
@@ -205,7 +283,7 @@ index adafc4fd661cf080b004b86c3eaed231a0133101..00000000000000000000000000000000
 -}
 \ No newline at end of file
 diff --git a/src/main/java/net/minecraft/server/MinecraftServer.java b/src/main/java/net/minecraft/server/MinecraftServer.java
-index a31f8bf3f4183a7a02f58f2321dbeaf427017b1c..4c5ee8ab215e8fedf65d2e28ac8dd5621a860385 100644
+index a31f8bf3f4183a7a02f58f2321dbeaf427017b1c..9ebc12148f0a1dab22b525ba5845276540c7ba75 100644
 --- a/src/main/java/net/minecraft/server/MinecraftServer.java
 +++ b/src/main/java/net/minecraft/server/MinecraftServer.java
 @@ -1712,7 +1712,7 @@ public abstract class MinecraftServer extends ReentrantBlockableEventLoop<TickTa
@@ -213,12 +291,12 @@ index a31f8bf3f4183a7a02f58f2321dbeaf427017b1c..4c5ee8ab215e8fedf65d2e28ac8dd562
      @DontObfuscate
      public String getServerModName() {
 -        return "Pufferfish"; // Pufferfish - Pufferfish > // Paper - Paper > // Spigot - Spigot > // CraftBukkit - cb > vanilla!
-+        return "Mirai"; // Mirai - Mirai > // Pufferfish - Pufferfish > // Paper - Paper > // Spigot - Spigot > // CraftBukkit - cb > vanilla!
++        return "Masami"; // Masami - Masami > // Mirai - Mirai > // Pufferfish - Pufferfish > // Paper - Paper > // Spigot - Spigot > // CraftBukkit - cb > vanilla!
      }
  
      public SystemReport fillSystemReport(SystemReport details) {
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index e62a643990929dccf1c022a3c9eca12d08d5ca7d..3191585bb7b3b9f0309f67c98b3668d01d25b4b7 100644
+index e62a643990929dccf1c022a3c9eca12d08d5ca7d..b721e03429433802398ec1c58a9516abd4341375 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 @@ -251,7 +251,7 @@ import javax.annotation.Nullable; // Paper
@@ -226,7 +304,7 @@ index e62a643990929dccf1c022a3c9eca12d08d5ca7d..3191585bb7b3b9f0309f67c98b3668d0
  
  public final class CraftServer implements Server {
 -    private final String serverName = "Pufferfish"; // Paper // Pufferfish
-+    private final String serverName = "Mirai"; // Paper // Pufferfish // Mirai
++    private final String serverName = "Masami"; // Paper // Pufferfish // Mirai // Masami
      private final String serverVersion;
      private final String bukkitVersion = Versioning.getBukkitVersion();
      private final Logger logger = Logger.getLogger("Minecraft");

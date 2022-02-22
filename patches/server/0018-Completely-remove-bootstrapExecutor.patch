@@ -7,7 +7,7 @@ Original code by PatinaMC, licensed under GNU General Public License v3.0
 You can find the original code on https://github.com/PatinaMC/Patina
 
 diff --git a/src/main/java/net/minecraft/Util.java b/src/main/java/net/minecraft/Util.java
-index 90018506da9e900d448a1fc43b3213ac513686e6..bd50d7f001aac517dcb9004241896ef20a589cd1 100644
+index 34e571b702684673b89103176838dc246ff9b24d..f11791bfdf7448ef0bbd56e8fd30b8ad840a1bbb 100644
 --- a/src/main/java/net/minecraft/Util.java
 +++ b/src/main/java/net/minecraft/Util.java
 @@ -73,7 +73,7 @@ public class Util {
